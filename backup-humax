@@ -3,6 +3,9 @@
 #
 # Script to backup humax
 #
+# Copyright (C) Graham R. Cobb, 2014
+# Released under GPL V2 -- see LICENSE
+#
 
 #
 # Uses ftp access.
