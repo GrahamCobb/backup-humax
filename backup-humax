@@ -48,7 +48,7 @@ cd "$backup_dir" || exit
     lftp <<EOF
 set ftp:passive-mode false
 open -u humaxftp,0000 $address
-mirror -c --delete-first
+mirror -cv --delete-first
 EOF
 
 ) 9>~/.backup-humax.lock
