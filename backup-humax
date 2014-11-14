@@ -34,6 +34,10 @@ fi
 cd "$backup_dir" || exit
 
 # Take out lock
+# Note: normally the lock would be taken out on a file in the destination
+# directory (so that multiple backups could happen at once).  However,
+# it is common that the destination is NFS mounted from a NAS, and locking
+# may not be available, so the lock is actually in the HOME directory.
 (
     if ! flock -n 9
     then
@@ -47,4 +51,4 @@ open -u humaxftp,0000 $address
 mirror -c --delete-first
 EOF
 
-) 9>.backup-humax.lock
+) 9>~/.backup-humax.lock
