@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#
+# Script to backup humax
+#
+
+#
+# Uses ftp access.
+# Relies on /nas/backup/humax being writable
+#
+
+if [ $# != 2 ]
+then
+    echo "Backs up the (encrypted) media files from a Humax HDR so they can be restored"
+    echo "to the same machine if the disk dies."
+    echo
+    echo "Usage:"
+    echo " $0 <address> <directory>"
+    exit 1
+fi
+
+address=$1
+backup_dir=$2
+
+if [ ! -d "$backup_dir" ]
+then
+    echo "Humax backup directory ($backup_dir) not mounted"
+    exit
+fi
+
+cd "$backup_dir" || exit
+
+# Take out lock
+(
+    if ! flock -n 9
+    then
+	echo "Could not get backup lock"
+	exit 2
+    fi
+
+    lftp <<EOF
+set ftp:passive-mode false
+open -u humaxftp,0000 $address
+mirror -c --delete-first
+EOF
+
+) 9>.backup-humax.lock
