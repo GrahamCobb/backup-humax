@@ -2,14 +2,10 @@
 
 #
 # Script to backup humax
+# Uses ftp access.
 #
 # Copyright (C) Graham R. Cobb, 2014
 # Released under GPL V2 -- see LICENSE
-#
-
-#
-# Uses ftp access.
-# Relies on /nas/backup/humax being writable
 #
 
 if [ $# != 2 ]
