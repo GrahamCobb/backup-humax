@@ -35,3 +35,21 @@ when it is on.
 3. FTP must be enabled on the Humax.
 
 4. The script depends on `lftp` being installed.
+
+## Notices
+Copyright (c) 2014 Graham R. Cobb.
+This software is distributed under the GPL (see the copyright notices and the LICENSE file).
+
+`backup-humax` is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+`backup-humax` is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+**IMPORTANT NOTES:** Humax is a trademark of Humax Co. Ltd.
+This page and software is not created, endorsed, reviewed, approved or in any other
+way associated with Humax Co. Ltd.
