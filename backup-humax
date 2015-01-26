@@ -41,7 +41,10 @@ cd "$backup_dir" || exit
 	exit 2
     fi
 
-    lftp <<EOF
+    # Humax ftp server seems to often hang for long periods of time
+    # (or appears to hang when the humax is suspended).
+    # Impose a time limit so we can try again later if necessary
+    timeout 6h lftp <<EOF
 set ftp:passive-mode false
 open -u humaxftp,0000 $address
 mirror -cv --delete-first
